@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>appearant — game localization, by hand</title>
+<meta name="description" content="Appearant is a game localization studio. We translate games into Chinese, Japanese and Korean — and out of them — by hand, for studios who care how the result reads.">
+<link rel="canonical" href="https://appearant.works/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://appearant.works/">
+<meta property="og:title" content="appearant — game localization, by hand">
+<meta property="og:description" content="We translate games into Chinese, Japanese and Korean — and out of them — for studios who care how the result reads.">
+<meta property="og:image" content="https://appearant.works/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/seal-128.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/seal-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700&family=IBM+Plex+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#DACFC0;
+    --olive:#637159;
+    --ink:#2B2B28;
+    --seal:#AC9A8C;
+    --taupe:#C9BDB4;
+    --lime:#ADBF2D;
+    --golden:#E9C11A;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Sofia Sans","IBM Plex Sans TC","Archivo","Inter","Helvetica Neue",Arial,sans-serif;
+    font-weight:400;
+    font-size:19px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+  section{padding:0 0 76px;}
+  h1,h2{font-weight:700;color:var(--olive);line-height:1.15;margin:0 0 20px;letter-spacing:-0.01em;}
+  h1{font-size:clamp(2.4rem,7vw,3.9rem);}
+  h2{font-size:clamp(1.5rem,3.6vw,2.1rem);}
+  h3{font-weight:700;color:var(--olive);font-size:1.12rem;margin:0 0 6px;line-height:1.3;}
+  p{margin:0 0 20px;max-width:62ch;}
+  a{color:var(--olive);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+  a:hover{text-decoration-thickness:2px;}
+  .kicker{color:var(--olive);font-size:.92rem;letter-spacing:.06em;margin:0 0 14px;}
+
+  /* header */
+  header{padding:56px 0 8px;}
+  .mark{display:flex;align-items:center;gap:16px;}
+  .mark img{width:66px;height:auto;display:block;}
+  .wordmark{font-weight:700;font-size:1.5rem;color:var(--olive);line-height:1.1;}
+  .wordmark .han{font-family:"IBM Plex Sans TC","Sofia Sans",sans-serif;font-weight:400;color:var(--seal);font-size:1.05rem;display:block;margin-top:2px;}
+
+  /* hero */
+  .hero{padding-top:44px;}
+  .lede{font-size:clamp(1.15rem,2.5vw,1.45rem);line-height:1.55;color:var(--ink);max-width:32ch;}
+  .btn{
+    display:inline-block;margin-top:12px;padding:15px 30px;border-radius:999px;
+    background:var(--olive);color:var(--paper);font-weight:700;font-size:1.02rem;
+    text-decoration:none;
+  }
+  .btn:hover{background:#55624c;text-decoration:none;}
+
+  hr{border:0;border-top:1px solid var(--seal);opacity:.55;margin:0 0 60px;}
+
+  /* cards */
+  .cards{display:grid;gap:16px;}
+  .card{background:var(--taupe);border-radius:var(--radius);padding:26px 28px;}
+  .card p{margin:0;max-width:58ch;}
+
+  /* languages */
+  .langs{display:grid;gap:16px;grid-template-columns:1fr;}
+  .lang{background:var(--taupe);border-radius:var(--radius);padding:24px 26px;}
+  .lang h3{margin-bottom:8px;}
+  .lang p{margin:0;font-size:1.02rem;}
+  .pairs{margin-top:26px;font-size:1rem;color:var(--olive);}
+  .pairs strong{font-weight:700;}
+
+  /* titles */
+  .titles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:26px;}
+  .title{background:var(--taupe);border-radius:var(--radius);padding:20px 22px;}
+  .title .name{font-weight:700;color:var(--olive);font-size:1.08rem;display:block;}
+  .title .meta{font-size:.94rem;color:var(--ink);opacity:.75;}
+  .also{font-size:1rem;color:var(--ink);opacity:.85;}
+
+  /* booth */
+  .booth{
+    background:transparent;border:2px solid var(--olive);border-radius:var(--radius);
+    padding:24px 28px;margin-bottom:44px;
+  }
+  .booth .tag{
+    display:inline-block;background:var(--golden);color:var(--ink);
+    font-weight:700;font-size:.8rem;letter-spacing:.06em;
+    padding:3px 12px;border-radius:999px;margin-bottom:10px;
+  }
+  .booth p{margin:0;font-size:1.05rem;}
+
+  /* contact */
+  .mailto{font-size:clamp(1.25rem,3.4vw,1.7rem);font-weight:700;color:var(--olive);word-break:break-word;}
+
+  footer{
+    border-top:1px solid var(--seal);padding:30px 0 60px;
+    font-size:.95rem;color:var(--ink);opacity:.8;
+  }
+  footer p{margin:0 0 6px;}
+
+  @media (min-width:720px){
+    .langs{grid-template-columns:1fr 1fr;}
+    section{padding-bottom:92px;}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    a,.btn{transition:background .15s ease;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="mark">
+      <img src="assets/seal-256.png" alt="Appearant seal">
+      <div class="wordmark">appearant<span class="han">梨所當然</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Game localization,<br>by hand.</h1>
+      <p class="lede">We translate games into Chinese, Japanese and Korean — and out of them — for studios who care how the result reads.</p>
+      <a class="btn" href="mailto:hello@appearant.works?subject=Localization%20enquiry">Talk to us</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <hr>
+      <h2>The problem we exist for</h2>
+      <p>Most localization arrives as a spreadsheet of strings from someone who never played the game. It comes back grammatical and wrong: the joke lands flat, the character sounds like a different person, the UI overflows.</p>
+      <p>Asian languages punish this harder than most. Register, honorifics and name order carry meaning that a string table does not show, and players notice immediately.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <hr>
+      <h2>How we work</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Translators lead the job</h3>
+          <p>The person answering your questions is the person doing the translation, not an account manager relaying messages. If a line is ambiguous, you hear about it while it can still be fixed.</p>
+        </div>
+        <div class="card">
+          <h3>By hand, start to finish</h3>
+          <p>Every line is written and reviewed by a human specialist in that language.</p>
+        </div>
+        <div class="card">
+          <h3>We handle the pipeline</h3>
+          <p>Files, formats, glossaries, character limits, timelines, deliveries. We work from a documented submission spec, so you know exactly what to send and what comes back.</p>
+        </div>
+        <div class="card">
+          <h3>We stay till it ships</h3>
+          <p>Late script changes, patch strings, store page updates, review passes after your first build lands. The job is not over when the first delivery goes out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <hr>
+      <h2>Languages</h2>
+      <div class="langs">
+        <div class="lang">
+          <h3>Into Asian markets</h3>
+          <p>Simplified Chinese · Traditional Chinese · Japanese · Korean</p>
+        </div>
+        <div class="lang">
+          <h3>Out of Asian markets</h3>
+          <p>Chinese and Japanese into English and other Western languages</p>
+        </div>
+      </div>
+      <p class="pairs"><strong>Pairs we have shipped:</strong> EN→ZH · EN→JA · EN→TH · EN→ES · ZH→EN · ZH→JA</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <hr>
+      <h2>Titles we've worked on</h2>
+      <div class="titles">
+        <div class="title"><span class="name">Nine Sols 九日</span><span class="meta">38,000+ reviews</span></div>
+        <div class="title"><span class="name">House Flipper: Home Design</span><span class="meta">2.9M+ reviews</span></div>
+        <div class="title"><span class="name">Superliminal</span><span class="meta">33,000+ reviews</span></div>
+        <div class="title"><span class="name">Manifold Garden</span><span class="meta">8,000+ reviews</span></div>
+      </div>
+      <p class="also">Also: The Legend of Tianding · Star Trucker · Mr. Prepper · Alina of the Arena · Midnight Ramen · Hirogami · Craftlings</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <hr>
+      <h2>Getting started</h2>
+      <p>Send us the build, or the strings, or just the store page. We'll come back with a quote, a timeline, and a sample so you can judge the writing before you commit to anything.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <hr>
+
+      <div class="booth">
+        <span class="tag">gamescom 2026</span>
+        <p>Find us in Cologne, 26–30 August — <strong>Hall 2.2, Stand B044G</strong>.</p>
+      </div>
+
+      <h2>Contact</h2>
+      <p><a class="mailto" href="mailto:hello@appearant.works?subject=Localization%20enquiry">hello@appearant.works</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>appearant 梨所當然 is a localization studio, part of Mango Party Games.</p>
+    <p>© 2026 Appearant</p>
+  </div>
+</footer>
+
+</body>
+</html>
