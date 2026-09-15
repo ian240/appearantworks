@@ -27,7 +27,7 @@ Full procedure, including DNS and Gandi Mail, is in
 | `CNAME` | Tells GitHub Pages the custom domain. Do not delete. |
 | `.nojekyll` | Skips Jekyll processing. |
 | `assets/seal-*.png` | Seal-only no-border logo, from `../assets/Logo/Logo Seal/`. |
-| `assets/games/` | Per-game key art (`<slug>-art.jpg`, 1200×900) and title logos (`<slug>-logo.png`, at most 600 px wide). |
+| `assets/games/` | Per-game key art as WebP at 480, 800 and 1100 px (`<slug>-art-<w>.webp`), an 800 px JPEG fallback (`<slug>-art.jpg`), and title logos (`<slug>-logo.png`). |
 | `assets/og.png` | Link preview card, 1200×630. |
 | `robots.txt`, `sitemap.xml` | Standard crawl files. |
 
@@ -38,11 +38,15 @@ string on the page comes from a slide, and the games section mirrors the portfol
 in deck order. When the deck changes, change the page to match. Where the deck has a gap,
 the page keeps the same gap.
 
-Key art was cut from the 2026-08-17 client drop: center-cropped to 4:3, 1200 px wide, JPEG
-q78. Logos use the same trim-and-shrink recipe as
-[`../assets/client-titles/collected-assets.md`](../assets/client-titles/collected-assets.md).
-Logo corners follow the deck. Star Trucker has no overlay because its logo is part of the art.
-Mr. Prepper has no art anywhere, so its panel is Seal Brown with the title set in type.
+Key art was cut from the 2026-08-17 client drop and center-cropped to 4:3. It is served
+through `<picture>` with a WebP `srcset` (quality 72), so a browser fetches only the width
+it needs. The art panel is at most about 660 CSS px wide, which is why the largest cut is
+1100 px. On desktop the whole games section loads about 470 KB. Logos are trimmed, sized to
+twice their largest display width, and saved as 128-color PNGs. That beat WebP for flat logo
+art: Superliminal is 6.5 KB as PNG and 47.6 KB as WebP. Logo corners follow the deck. Star
+Trucker has no overlay because its logo is part of the art.
+
+Mr. Prepper was taken off the page on 2026-09-15, because no art for it exists anywhere.
 
 Brand rules come from [`../assets/design-spec.md`](../assets/design-spec.md):
 Warm Paper `#DACFC0` ground, Olive Green `#637159` ink, Seal Brown `#AC9A8C` and Soft Taupe

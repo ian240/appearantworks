@@ -87,13 +87,11 @@
   .games{display:grid;gap:28px;}
   .game{background:var(--taupe);border-radius:var(--radius);overflow:hidden;display:grid;}
   .art{position:relative;aspect-ratio:4/3;background:var(--seal);}
-  .art > img:first-child{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .art > picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
   .art .logo{position:absolute;height:auto;width:var(--lw,34%);}
   .art .tl{top:5%;left:5%;}
   .art .tr{top:5%;right:5%;}
   .art .br{bottom:5%;right:5%;}
-  .art.blank{display:flex;align-items:center;justify-content:center;padding:24px;}
-  .art.blank span{font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--paper);text-align:center;line-height:1.15;}
   .info{padding:24px 26px 26px;display:flex;flex-direction:column;}
   .info h3{font-size:1.35rem;margin-bottom:8px;}
   .info h3 .han{font-family:"IBM Plex Sans TC","Sofia Sans",sans-serif;font-weight:400;}
@@ -116,7 +114,6 @@
     section{padding-bottom:92px;}
     .game{grid-template-columns:1.15fr 1fr;}
     .art{aspect-ratio:auto;min-height:100%;}
-    .art.blank{min-height:320px;}
     .cards.three{grid-template-columns:repeat(3,1fr);}
   }
   @media (prefers-reduced-motion:reduce){
@@ -225,8 +222,8 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/nine-sols-art.jpg" alt="Nine Sols key art" width="1200" height="900" loading="lazy">
-            <img class="logo br" src="assets/games/nine-sols-logo.png" alt="" width="478" height="666" style="--lw:20%" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/nine-sols-art-480.webp 480w, assets/games/nine-sols-art-800.webp 800w, assets/games/nine-sols-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/nine-sols-art.jpg" alt="Nine Sols key art" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo br" src="assets/games/nine-sols-logo.png" alt="" width="280" height="390" style="--lw:20%" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>Nine Sols <span class="han">九日</span></h3>
@@ -240,8 +237,8 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/house-flipper-home-design-art.jpg" alt="House Flipper: Home Design screenshot" width="1200" height="900" loading="lazy">
-            <img class="logo br" src="assets/games/house-flipper-home-design-logo.png" alt="" width="600" height="338" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/house-flipper-home-design-art-480.webp 480w, assets/games/house-flipper-home-design-art-800.webp 800w, assets/games/house-flipper-home-design-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/house-flipper-home-design-art.jpg" alt="House Flipper: Home Design screenshot" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo br" src="assets/games/house-flipper-home-design-logo.png" alt="" width="460" height="259" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>House Flipper: Home Design</h3>
@@ -255,8 +252,8 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/manifold-garden-art.jpg" alt="Manifold Garden screenshot" width="936" height="702" loading="lazy">
-            <img class="logo tl" src="assets/games/manifold-garden-logo.png" alt="" width="600" height="31" style="--lw:55%" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/manifold-garden-art-480.webp 480w, assets/games/manifold-garden-art-800.webp 800w, assets/games/manifold-garden-art-936.webp 936w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/manifold-garden-art.jpg" alt="Manifold Garden screenshot" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo tl" src="assets/games/manifold-garden-logo.png" alt="" width="600" height="31" style="--lw:55%" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>Manifold Garden</h3>
@@ -270,8 +267,8 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/superliminal-art.jpg" alt="Superliminal key art" width="1200" height="900" loading="lazy">
-            <img class="logo br" src="assets/games/superliminal-logo.png" alt="" width="600" height="338" style="--lw:40%" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/superliminal-art-480.webp 480w, assets/games/superliminal-art-800.webp 800w, assets/games/superliminal-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/superliminal-art.jpg" alt="Superliminal key art" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo br" src="assets/games/superliminal-logo.png" alt="" width="540" height="304" style="--lw:40%" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>Superliminal</h3>
@@ -285,7 +282,7 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/star-trucker-art.jpg" alt="Star Trucker key art" width="1200" height="900" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/star-trucker-art-480.webp 480w, assets/games/star-trucker-art-800.webp 800w, assets/games/star-trucker-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/star-trucker-art.jpg" alt="Star Trucker key art" width="800" height="600" loading="lazy" decoding="async"></picture>
           </div>
           <div class="info">
             <h3>Star Trucker</h3>
@@ -298,23 +295,9 @@
         </article>
 
         <article class="game">
-          <div class="art blank">
-            <span>Mr. Prepper</span>
-          </div>
-          <div class="info">
-            <h3>Mr. Prepper</h3>
-            <p>Pre-apocalyptic survival. Dig a hidden bunker, stockpile supplies, and outwit the regime before the fall.</p>
-            <dl class="record">
-              <dt>Services</dt><dd>Localization. English to Japanese.</dd>
-              <dt>Reviews</dt><dd>5.4K+ · Very Positive</dd>
-            </dl>
-          </div>
-        </article>
-
-        <article class="game">
           <div class="art">
-            <img src="assets/games/legend-of-tianding-art.jpg" alt="The Legend of Tianding screenshot" width="1200" height="900" loading="lazy">
-            <img class="logo tl" src="assets/games/legend-of-tianding-logo.png" alt="" width="600" height="246" style="--lw:38%" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/legend-of-tianding-art-480.webp 480w, assets/games/legend-of-tianding-art-800.webp 800w, assets/games/legend-of-tianding-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/legend-of-tianding-art.jpg" alt="The Legend of Tianding screenshot" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo tl" src="assets/games/legend-of-tianding-logo.png" alt="" width="510" height="209" style="--lw:38%" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>The Legend of Tianding <span class="han">廖添丁</span></h3>
@@ -328,8 +311,8 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/alina-of-the-arena-art.jpg" alt="Alina of the Arena key art" width="1200" height="900" loading="lazy">
-            <img class="logo tr" src="assets/games/alina-of-the-arena-logo.png" alt="" width="194" height="99" style="--lw:34%" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/alina-of-the-arena-art-480.webp 480w, assets/games/alina-of-the-arena-art-800.webp 800w, assets/games/alina-of-the-arena-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/alina-of-the-arena-art.jpg" alt="Alina of the Arena key art" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo tr" src="assets/games/alina-of-the-arena-logo.png" alt="" width="194" height="99" style="--lw:34%" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>Alina of the Arena</h3>
@@ -343,8 +326,8 @@
 
         <article class="game">
           <div class="art">
-            <img src="assets/games/rubinite-art.jpg" alt="Rubinite key art" width="1200" height="900" loading="lazy">
-            <img class="logo tl" src="assets/games/rubinite-logo.png" alt="" width="600" height="159" style="--lw:40%" loading="lazy">
+            <picture><source type="image/webp" srcset="assets/games/rubinite-art-480.webp 480w, assets/games/rubinite-art-800.webp 800w, assets/games/rubinite-art-1100.webp 1100w" sizes="(min-width:1040px) 526px, (min-width:720px) 51vw, calc(100vw - 56px)"><img src="assets/games/rubinite-art.jpg" alt="Rubinite key art" width="800" height="600" loading="lazy" decoding="async"></picture>
+            <img class="logo tl" src="assets/games/rubinite-logo.png" alt="" width="540" height="143" style="--lw:40%" loading="lazy" decoding="async">
           </div>
           <div class="info">
             <h3>Rubinite</h3>
