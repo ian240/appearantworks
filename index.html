@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>appearant — game localization, by hand</title>
-<meta name="description" content="Appearant is a game localization studio. We translate games into Chinese, Japanese and Korean — and out of them — by hand, for studios who care how the result reads.">
+<title>appearant: appear as intended.</title>
+<meta name="description" content="Appearant is a game localization studio. Human translation in every language your players read, from audit to release.">
 <link rel="canonical" href="https://appearant.works/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://appearant.works/">
-<meta property="og:title" content="appearant — game localization, by hand">
-<meta property="og:description" content="We translate games into Chinese, Japanese and Korean — and out of them — for studios who care how the result reads.">
+<meta property="og:title" content="appearant: appear as intended.">
+<meta property="og:description" content="Game localization in every language your players read. One partner, the whole journey.">
 <meta property="og:image" content="https://appearant.works/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/seal-128.png" type="image/png">
@@ -24,12 +24,10 @@
     --ink:#2B2B28;
     --seal:#AC9A8C;
     --taupe:#C9BDB4;
-    --lime:#ADBF2D;
-    --golden:#E9C11A;
     --radius:18px;
   }
   *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
   body{
     margin:0;
     background:var(--paper);
@@ -41,7 +39,8 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
-  section{padding:0 0 76px;}
+  .wrap.wide{max-width:1040px;}
+  section{padding:0 0 76px;scroll-margin-top:24px;}
   h1,h2{font-weight:700;color:var(--olive);line-height:1.15;margin:0 0 20px;letter-spacing:-0.01em;}
   h1{font-size:clamp(2.4rem,7vw,3.9rem);}
   h2{font-size:clamp(1.5rem,3.6vw,2.1rem);}
@@ -49,14 +48,18 @@
   p{margin:0 0 20px;max-width:62ch;}
   a{color:var(--olive);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
   a:hover{text-decoration-thickness:2px;}
-  .kicker{color:var(--olive);font-size:.92rem;letter-spacing:.06em;margin:0 0 14px;}
+  .sub{color:var(--olive);font-size:1.1rem;margin-top:-8px;}
 
   /* header */
   header{padding:56px 0 8px;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
   .mark{display:flex;align-items:center;gap:16px;}
   .mark img{width:66px;height:auto;display:block;}
   .wordmark{font-weight:700;font-size:1.5rem;color:var(--olive);line-height:1.1;}
   .wordmark .han{font-family:"IBM Plex Sans TC","Sofia Sans",sans-serif;font-weight:400;color:var(--seal);font-size:1.05rem;display:block;margin-top:2px;}
+  nav{display:flex;gap:18px;font-size:1rem;}
+  nav a{text-decoration:none;}
+  nav a:hover{text-decoration:underline;}
 
   /* hero */
   .hero{padding-top:44px;}
@@ -70,37 +73,35 @@
 
   hr{border:0;border-top:1px solid var(--seal);opacity:.55;margin:0 0 60px;}
 
+  /* key points */
+  .points{display:grid;gap:12px;margin:0 0 24px;padding:0;list-style:none;}
+  .points li{background:var(--taupe);border-radius:var(--radius);padding:18px 24px;}
+
   /* cards */
   .cards{display:grid;gap:16px;}
-  .card{background:var(--taupe);border-radius:var(--radius);padding:26px 28px;}
+  .card{background:var(--taupe);border-radius:var(--radius);padding:24px 28px;}
   .card p{margin:0;max-width:58ch;}
+  .card .step{font-weight:700;color:var(--seal);margin-right:8px;}
 
-  /* languages */
-  .langs{display:grid;gap:16px;grid-template-columns:1fr;}
-  .lang{background:var(--taupe);border-radius:var(--radius);padding:24px 26px;}
-  .lang h3{margin-bottom:8px;}
-  .lang p{margin:0;font-size:1.02rem;}
-  .pairs{margin-top:26px;font-size:1rem;color:var(--olive);}
-  .pairs strong{font-weight:700;}
-
-  /* titles */
-  .titles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:26px;}
-  .title{background:var(--taupe);border-radius:var(--radius);padding:20px 22px;}
-  .title .name{font-weight:700;color:var(--olive);font-size:1.08rem;display:block;}
-  .title .meta{font-size:.94rem;color:var(--ink);opacity:.75;}
-  .also{font-size:1rem;color:var(--ink);opacity:.85;}
-
-  /* booth */
-  .booth{
-    background:transparent;border:2px solid var(--olive);border-radius:var(--radius);
-    padding:24px 28px;margin-bottom:44px;
-  }
-  .booth .tag{
-    display:inline-block;background:var(--golden);color:var(--ink);
-    font-weight:700;font-size:.8rem;letter-spacing:.06em;
-    padding:3px 12px;border-radius:999px;margin-bottom:10px;
-  }
-  .booth p{margin:0;font-size:1.05rem;}
+  /* games */
+  .games{display:grid;gap:28px;}
+  .game{background:var(--taupe);border-radius:var(--radius);overflow:hidden;display:grid;}
+  .art{position:relative;aspect-ratio:4/3;background:var(--seal);}
+  .art > img:first-child{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .art .logo{position:absolute;height:auto;width:var(--lw,34%);}
+  .art .tl{top:5%;left:5%;}
+  .art .tr{top:5%;right:5%;}
+  .art .br{bottom:5%;right:5%;}
+  .art.blank{display:flex;align-items:center;justify-content:center;padding:24px;}
+  .art.blank span{font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--paper);text-align:center;line-height:1.15;}
+  .info{padding:24px 26px 26px;display:flex;flex-direction:column;}
+  .info h3{font-size:1.35rem;margin-bottom:8px;}
+  .info h3 .han{font-family:"IBM Plex Sans TC","Sofia Sans",sans-serif;font-weight:400;}
+  .info > p{font-size:1.02rem;margin-bottom:18px;}
+  .record{background:var(--olive);color:var(--paper);border-radius:12px;padding:16px 20px;margin:auto 0 0;font-size:.98rem;line-height:1.5;}
+  .record dt{font-weight:700;}
+  .record dd{margin:0 0 8px;}
+  .record dd:last-child{margin-bottom:0;}
 
   /* contact */
   .mailto{font-size:clamp(1.25rem,3.4vw,1.7rem);font-weight:700;color:var(--olive);word-break:break-word;}
@@ -112,8 +113,14 @@
   footer p{margin:0 0 6px;}
 
   @media (min-width:720px){
-    .langs{grid-template-columns:1fr 1fr;}
     section{padding-bottom:92px;}
+    .game{grid-template-columns:1.15fr 1fr;}
+    .art{aspect-ratio:auto;min-height:100%;}
+    .art.blank{min-height:320px;}
+    .cards.three{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
   }
   @media (prefers-reduced-motion:no-preference){
     a,.btn{transition:background .15s ease;}
@@ -125,9 +132,14 @@
 <header>
   <div class="wrap">
     <div class="mark">
-      <img src="assets/seal-256.png" alt="Appearant seal">
+      <img src="assets/seal-256.png" alt="Appearant seal" width="256" height="256">
       <div class="wordmark">appearant<span class="han">梨所當然</span></div>
     </div>
+    <nav aria-label="Sections">
+      <a href="#services">services</a>
+      <a href="#games">games</a>
+      <a href="#contact">contact</a>
+    </nav>
   </div>
 </header>
 
@@ -135,8 +147,8 @@
 
   <section class="hero">
     <div class="wrap">
-      <h1>Game localization,<br>by hand.</h1>
-      <p class="lede">We translate games into Chinese, Japanese and Korean — and out of them — for studios who care how the result reads.</p>
+      <h1>appear as intended.</h1>
+      <p class="lede">Game localization in every language your players read.</p>
       <a class="btn" href="mailto:hello@appearant.works?subject=Localization%20enquiry">Talk to us</a>
     </div>
   </section>
@@ -144,32 +156,40 @@
   <section>
     <div class="wrap">
       <hr>
-      <h2>The problem we exist for</h2>
-      <p>Most localization arrives as a spreadsheet of strings from someone who never played the game. It comes back grammatical and wrong: the joke lands flat, the character sounds like a different person, the UI overflows.</p>
-      <p>Asian languages punish this harder than most. Register, honorifics and name order carry meaning that a string table does not show, and players notice immediately.</p>
+      <h2>AI made localization cheap. It also made it a mess.</h2>
+      <ul class="points">
+        <li>Every studio has AI-translated something. Few of them trust it.</li>
+        <li>Players notice, and it costs you reviews.</li>
+      </ul>
+      <p>Your game should appear as intended. Whatever state it's in, that's what we fix.</p>
     </div>
   </section>
 
-  <section>
+  <section id="services">
     <div class="wrap">
       <hr>
-      <h2>How we work</h2>
+      <h2>One partner, the whole journey.</h2>
+      <p class="sub">Come in at any stage.</p>
       <div class="cards">
         <div class="card">
-          <h3>Translators lead the job</h3>
-          <p>The person answering your questions is the person doing the translation, not an account manager relaying messages. If a line is ambiguous, you hear about it while it can still be fixed.</p>
+          <h3><span class="step">1</span>Assess</h3>
+          <p>Drop in for an audit of your current translations. Send us your loc, AI or human, any language. You get a plain roadmap and a quote to a painless release.</p>
         </div>
         <div class="card">
-          <h3>By hand, start to finish</h3>
-          <p>Every line is written and reviewed by a human specialist in that language.</p>
+          <h3><span class="step">2</span>Prepare</h3>
+          <p>Get your script translation-ready with the right format and context. Messy export, odd format? We sort it, glossary and all, and set you up for next time.</p>
         </div>
         <div class="card">
-          <h3>We handle the pipeline</h3>
-          <p>Files, formats, glossaries, character limits, timelines, deliveries. We work from a documented submission spec, so you know exactly what to send and what comes back.</p>
+          <h3><span class="step">3</span>Translate</h3>
+          <p>Human, in every language your players read, calibrated to your script. Real translators, never machine post-editing. Eleven languages and counting, Chinese and Japanese to the world.</p>
         </div>
         <div class="card">
-          <h3>We stay till it ships</h3>
-          <p>Late script changes, patch strings, store page updates, review passes after your first build lands. The job is not over when the first delivery goes out.</p>
+          <h3><span class="step">4</span>Voice</h3>
+          <p>Voice your game professionally in Japanese or Chinese, on request. Native voice talent matched to each character's register, recorded, directed, and delivered to your spec.</p>
+        </div>
+        <div class="card">
+          <h3><span class="step">5</span>Ship</h3>
+          <p>In-game testing up to release, by native-speaker gamers who play it all. Overflow, clipping, wrong variables, leftover source text. After release we watch reviews and flag what needs a fix.</p>
         </div>
       </div>
     </div>
@@ -178,54 +198,185 @@
   <section>
     <div class="wrap">
       <hr>
-      <h2>Languages</h2>
-      <div class="langs">
-        <div class="lang">
-          <h3>Into Asian markets</h3>
-          <p>Simplified Chinese · Traditional Chinese · Japanese · Korean</p>
+      <h2>Three ways to work with us.</h2>
+      <p class="sub">Pick where you are.</p>
+      <div class="cards three">
+        <div class="card">
+          <h3>Check-up</h3>
+          <p>We audit your existing loc and hand you a roadmap.</p>
         </div>
-        <div class="lang">
-          <h3>Out of Asian markets</h3>
-          <p>Chinese and Japanese into English and other Western languages</p>
+        <div class="card">
+          <h3>Localization</h3>
+          <p>Prepare, translate, and test. Done by people. Our core.</p>
+        </div>
+        <div class="card">
+          <h3>Turnkey</h3>
+          <p>The whole pipeline, build in and build out. Voice optional.</p>
         </div>
       </div>
-      <p class="pairs"><strong>Pairs we have shipped:</strong> EN→ZH · EN→JA · EN→TH · EN→ES · ZH→EN · ZH→JA</p>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
+  <section id="games">
+    <div class="wrap wide">
       <hr>
-      <h2>Titles we've worked on</h2>
-      <div class="titles">
-        <div class="title"><span class="name">Nine Sols 九日</span><span class="meta">38,000+ reviews</span></div>
-        <div class="title"><span class="name">House Flipper: Home Design</span><span class="meta">2.9M+ reviews</span></div>
-        <div class="title"><span class="name">Superliminal</span><span class="meta">33,000+ reviews</span></div>
-        <div class="title"><span class="name">Manifold Garden</span><span class="meta">8,000+ reviews</span></div>
+      <h2>Games</h2>
+      <div class="games">
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/nine-sols-art.jpg" alt="Nine Sols key art" width="1200" height="900" loading="lazy">
+            <img class="logo br" src="assets/games/nine-sols-logo.png" alt="" width="478" height="666" style="--lw:20%" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>Nine Sols <span class="han">九日</span></h3>
+            <p>A hand-drawn Taopunk tale of revenge. Deflect, counter, and topple towering bosses in a fallen cyberpunk world.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>English localization and in-build testing. Chinese to English.</dd>
+              <dt>Reviews</dt><dd>44K+ · Very Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/house-flipper-home-design-art.jpg" alt="House Flipper: Home Design screenshot" width="1200" height="900" loading="lazy">
+            <img class="logo br" src="assets/games/house-flipper-home-design-logo.png" alt="" width="600" height="338" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>House Flipper: Home Design</h3>
+            <p>Buy rundown houses, renovate them, and restyle them into dream homes. A mobile design hit with millions of players.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. English to Thai.</dd>
+              <dt>Reviews</dt><dd>2.9M+ ratings (mobile)</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/manifold-garden-art.jpg" alt="Manifold Garden screenshot" width="936" height="702" loading="lazy">
+            <img class="logo tl" src="assets/games/manifold-garden-logo.png" alt="" width="600" height="31" style="--lw:55%" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>Manifold Garden</h3>
+            <p>An Escher-like world where gravity bends and space folds back on itself. Fall forever, and rethink up and down.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. English to Simplified Chinese.</dd>
+              <dt>Reviews</dt><dd>8K+ · Overwhelmingly Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/superliminal-art.jpg" alt="Superliminal key art" width="1200" height="900" loading="lazy">
+            <img class="logo br" src="assets/games/superliminal-logo.png" alt="" width="600" height="338" style="--lw:40%" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>Superliminal</h3>
+            <p>A first-person puzzle where forced perspective is the rule. What you see becomes real, and size is a matter of view.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. English to Simplified Chinese.</dd>
+              <dt>Reviews</dt><dd>33K+ · Very Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/star-trucker-art.jpg" alt="Star Trucker key art" width="1200" height="900" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>Star Trucker</h3>
+            <p>Part space sim, part open road. Haul cargo, patch your rig, and cruise a neon CB-radio frontier.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. English to Simplified Chinese.</dd>
+              <dt>Reviews</dt><dd>5.2K+ · Mostly Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art blank">
+            <span>Mr. Prepper</span>
+          </div>
+          <div class="info">
+            <h3>Mr. Prepper</h3>
+            <p>Pre-apocalyptic survival. Dig a hidden bunker, stockpile supplies, and outwit the regime before the fall.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. English to Japanese.</dd>
+              <dt>Reviews</dt><dd>5.4K+ · Very Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/legend-of-tianding-art.jpg" alt="The Legend of Tianding screenshot" width="1200" height="900" loading="lazy">
+            <img class="logo tl" src="assets/games/legend-of-tianding-logo.png" alt="" width="600" height="246" style="--lw:38%" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>The Legend of Tianding <span class="han">廖添丁</span></h3>
+            <p>Play Taiwan's own folk hero in a comic-panel brawler through Japanese-occupied Taipei.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. Chinese to English and Chinese to Japanese.</dd>
+              <dt>Reviews</dt><dd>4.3K+ · Very Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/alina-of-the-arena-art.jpg" alt="Alina of the Arena key art" width="1200" height="900" loading="lazy">
+            <img class="logo tr" src="assets/games/alina-of-the-arena-logo.png" alt="" width="194" height="99" style="--lw:34%" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>Alina of the Arena</h3>
+            <p>A roguelike deckbuilder with a tactical twist. Dodge across a hex arena and carve down the crowd.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>Localization. English to Spanish.</dd>
+              <dt>Reviews</dt><dd>3.9K+ · Very Positive</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="art">
+            <img src="assets/games/rubinite-art.jpg" alt="Rubinite key art" width="1200" height="900" loading="lazy">
+            <img class="logo tl" src="assets/games/rubinite-logo.png" alt="" width="600" height="159" style="--lw:40%" loading="lazy">
+          </div>
+          <div class="info">
+            <h3>Rubinite</h3>
+            <p>A brutal pixel boss rush in a dark fairy tale. Read each monster, expose the weak point, and shatter it.</p>
+            <dl class="record">
+              <dt>Services</dt><dd>From Chinese into seven languages, with three more underway.</dd>
+              <dt>Reviews</dt><dd>2.3K+ in two weeks · Very Positive</dd>
+            </dl>
+          </div>
+        </article>
+
       </div>
-      <p class="also">Also: The Legend of Tianding · Star Trucker · Mr. Prepper · Alina of the Arena · Midnight Ramen · Hirogami · Craftlings</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <hr>
-      <h2>Getting started</h2>
-      <p>Send us the build, or the strings, or just the store page. We'll come back with a quote, a timeline, and a sample so you can judge the writing before you commit to anything.</p>
+      <h2>The people behind every package.</h2>
+      <ul class="points">
+        <li>Translators run your project, not account managers.</li>
+        <li>Native-speaker gamers who test in your actual build.</li>
+      </ul>
     </div>
   </section>
 
-  <section>
+  <section id="contact">
     <div class="wrap">
       <hr>
-
-      <div class="booth">
-        <span class="tag">gamescom 2026</span>
-        <p>Find us in Cologne, 26–30 August — <strong>Hall 2.2, Stand B044G</strong>.</p>
-      </div>
-
-      <h2>Contact</h2>
-      <p><a class="mailto" href="mailto:hello@appearant.works?subject=Localization%20enquiry">hello@appearant.works</a></p>
+      <h2>Start with a check-up.</h2>
+      <p>Send your current translation and we'll take a look.</p>
+      <p><a class="mailto" href="mailto:hello@appearant.works?subject=Check-up">hello@appearant.works</a></p>
     </div>
   </section>
 
